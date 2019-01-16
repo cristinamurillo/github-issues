@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
+import ResultsCont from './ResultsCont';
 
 class Landing extends Component {
+
     render() {
         return (
             <div>
-                <p>hi</p>
+                <ResultsCont />
             </div>
-        );
+        )
     }
 }
 
-export default Landing;
+export default withRouter(Landing);
