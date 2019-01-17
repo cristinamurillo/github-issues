@@ -1,11 +1,21 @@
+@font-face {
+  font-family: ikaros;
+  src: url(Ikaros-Regular.otf)
+}
+html {
+  height: 100vh;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
+  background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
+
+    -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -13,17 +23,65 @@ code {
     monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: ikaros;
+}
+
+#icon1 {
+  width: 10em;
+  position: absolute;
+  z-index: -1;
+  top: 45%;
+  left: 10%;
+  transform: rotate(45deg);
+  /* animation: spin 10s infinite linear; */
+}
+
+#icon2{
+  width: 12em;
+  position: absolute;
+  z-index: -1;
+  top: 85%;
+  right: 11%;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg) ; }
+	to { transform: rotate(360deg); }
+}
+
+#header {
+ font-size: 10vh;
+ margin: 20vh 4vh 8vh 4vh;
+}
+
+#issues-header{
+  text-align: left;
+  margin-left: 4.3em;
+  margin-top: 2em;
+  font-size: 6vh;
+  opacity: .9;
+}
+.issues-list {
+  max-height: 80vh;
+  overflow: scroll;
+  padding: 0;
+  margin: 2em 8em;
+}
 
 .issue-cont {
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 0 0.5em 0.01em black;
-  max-width: 85%;
+  max-width: 70%;
   margin: 1em auto;
   padding: 1.2em;
+  background: rgba(255,255,255,.6);
 }
 
 .issue-title {
   margin-top: 0;
+  font-size: 1.2em;
+  font-weight: 500;
 }
 
 .flex {
@@ -31,9 +89,53 @@ code {
   justify-content: space-around;
 }
 
+.col1 {
+  text-align: left;
+  width: 70%;
+}
+
 .details {
   text-align: left;
   font-size: 70%;
   margin: 2em;
   overflow: scroll;
+  margin: 2% 10%;
+}
+
+input {
+  padding: .85em;
+  border-radius: 6px;
+  border: none;
+  margin: .8em .4em;
+  box-shadow: 0 0 2px 0.5px #161616;
+  background: rgba(245,245,245,.7);
+  min-width: 30vh;
+}
+
+input.submit {
+  min-width: 10vh;
+  font-weight: bold;
+}
+.submit:hover {
+  background: black;
+  color: white;
+  transition: all .5s;
+}
+
+.med-button {
+  padding: 1em;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: 0 0 2px grey;
+  margin: 0 .5em;
+  transition: all .5s;
+}
+
+.med-button:hover {
+  background-color: rgba(0, 255, 191, 0.4); 
+  border-color: rgb(255, 255, 255);
+  transform: translateY(-2px);
 }

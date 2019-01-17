@@ -16,10 +16,12 @@ class ResultsCont extends Component {
             console.log(results)
             return (
                 <div>
-                    <h2>Project Issues:</h2>
+                    <h2 id="issues-header">Project Issues:</h2>
+                    <div className="issues-list">
                     {results.data.map(issue => {
                         return <IssueView issue={issue}/>
                     })}
+                    </div>
                 </div>
             );
     }}
