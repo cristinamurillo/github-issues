@@ -23,7 +23,7 @@ class IssueView extends Component {
             <div className="issue-cont">
                 <div className="flex">
                     <div>
-                        <h4>{issue.title}</h4>
+                        <h4 className="issue-title">{issue.title}</h4>
                         <p>Status: {issue.state}</p>
                         <a href={issue.html_url} target='_blank'>View on Github</a>
                     </div>

@@ -17,7 +17,9 @@ class ResultsCont extends Component {
             return (
                 <div>
                     <h2>Project Issues:</h2>
-                    <IssueView issue={results.data[0]}/>
+                    {results.data.map(issue => {
+                        return <IssueView issue={issue}/>
+                    })}
                 </div>
             );
     }}
