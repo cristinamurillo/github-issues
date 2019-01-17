@@ -16,7 +16,6 @@ body {
     -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  position: absolute;
 }
 
 code {
@@ -29,12 +28,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #icon1 {
+  width: 10em;
+  position: absolute;
+  z-index: -1;
+  top: 45%;
+  left: 10%;
+  transform: rotate(45deg);
+  /* animation: spin 10s infinite linear; */
+}
+
+#icon2{
   width: 12em;
   position: absolute;
   z-index: -1;
-  top: 40%;
-  left: 10%;
-  animation: spin 10s infinite linear;
+  top: 85%;
+  right: 11%;
 }
 
 @keyframes spin {
@@ -44,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header {
  font-size: 10vh;
- margin: 20vh 4vh 5vh 4vh;
+ margin: 20vh 4vh 8vh 4vh;
 }
 
 #issues-header{
