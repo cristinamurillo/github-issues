@@ -52,9 +52,9 @@ class Landing extends Component {
                 <form onSubmit={this.submitHandler}>
                     <input type="text" name="owner" value={this.state.owner} onChange={this.changeHandler}/>
                     <input type="text" name="repo" value={this.state.repo} onChange={this.changeHandler}/>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Search"/>
                 </form>
-               {this.state.submitted && <ResultsCont results={this.state.response} error={this.state.error}/>}
+               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error}/>}
             </div>
         )
     }

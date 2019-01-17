@@ -12,3 +12,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.issue-cont {
+  border-radius: 4px;
+  box-shadow: 0 0 0.5em 0.01em black;
+  max-width: 85%;
+  margin: 1em auto;
+  padding: 1.2em;
+}
+
+.issue-title {
+  margin-top: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.details {
+  text-align: left;
+  font-size: 70%;
+  margin: 2em;
+  overflow: scroll;
+}

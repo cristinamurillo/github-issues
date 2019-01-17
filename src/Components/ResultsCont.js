@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
+import IssueView from './IssueView';
 
 class ResultsCont extends Component {
 
@@ -12,9 +13,13 @@ class ResultsCont extends Component {
                 <p>{error}</p>
             )
         } else {
+            console.log(results)
             return (
                 <div>
-                    <p>we got results</p>
+                    <h2>Project Issues:</h2>
+                    {results.data.map(issue => {
+                        return <IssueView issue={issue}/>
+                    })}
                 </div>
             );
     }}
