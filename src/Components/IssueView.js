@@ -22,13 +22,13 @@ class IssueView extends Component {
         return (
             <div className="issue-cont">
                 <div className="flex">
-                    <div>
+                    <div className="col1">
                         <h4 className="issue-title">{issue.title}</h4>
                         <p>Status: {issue.state}</p>
-                        <a href={issue.html_url} target='_blank'>View on Github</a>
+                        <a href={issue.html_url} target='_blank' rel="noopener noreferrer">View on Github</a>
                     </div>
                     <div>
-                        <button onClick={this.detailToggle}>{this.state.showBody ? 'Hide Details': 'Show Details'}</button>
+                        <button className="med-button" onClick={this.detailToggle}>{this.state.showBody ? 'Hide Details': 'Show Details'}</button>
                     </div>
                 </div>
                 {this.state.showBody && <div className="details"><Markdown escapeHtml={true} source={this.parseDetails()}/></div>}
