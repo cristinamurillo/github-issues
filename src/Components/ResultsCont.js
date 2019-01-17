@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import IssueView from './IssueView';
+import ring from '../ring.png'
 
 class ResultsCont extends Component {
 
@@ -11,7 +12,8 @@ class ResultsCont extends Component {
             return (
                 <React.Fragment>
                     <h2 id="issues-header">Project Issues:</h2>
-                    <p>Loading</p>
+                    <img src={ring} alt="loader" className="loader"/>
+                    <p className="medium">Loading</p>
                 </React.Fragment>
             )
         } else if(error){

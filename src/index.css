@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .issue-title {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -151,6 +152,10 @@ input.submit {
   font-size: 1.3em;
 }
 
+.medium {
+  font-size: 1.3em;
+  font-family: ikaros;
+}
 .page-link:hover {
   cursor: pointer;
 }
@@ -165,6 +170,12 @@ input.submit {
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 1s;
+}
+
+.loader {
+  width: 10vh;
+  animation: spin 5s infinite linear;
+
 }
 
 @keyframes fadeInOpacity {
