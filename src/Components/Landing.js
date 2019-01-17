@@ -23,8 +23,16 @@ class Landing extends Component {
         })
     }
 
+    pageHandler = (e) => {
+        if(e.target.name === "previous"){
+            this.setState({page: this.state.page-1}, ()=>this.submitHandler(null))
+        } else {
+            this.setState({page: this.state.page+1}, ()=> this.submitHandler(null))
+        }
+    }
+
     submitHandler = (e) => {
-        e.preventDefault()
+        e && e.preventDefault()
         this.setState({
             loading: true,
             submitted: true
@@ -50,8 +58,8 @@ class Landing extends Component {
     render() {
         return (
             <React.Fragment>
-                <img id="icon1" src={hammer}/>
-                <img id="icon2" src={roller}/>
+                <img id="icon1" src={hammer} alt="hammer"/>
+                <img id="icon2" src={roller} alt="roller"/>
             <div>
                 <h1 id="header">Explore Github Issues!</h1>
                 <form onSubmit={this.submitHandler}>
@@ -59,7 +67,7 @@ class Landing extends Component {
                     <input type="text" name="repo" value={this.state.repo} placeholder="Repository Name" onChange={this.changeHandler} required/>
                     <input type="submit" className="submit" value="Search"/>
                 </form>
-               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error}/>}
+               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler}/>}
             </div>
             </React.Fragment>
         )
