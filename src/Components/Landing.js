@@ -46,7 +46,6 @@ class Landing extends Component {
     }
 
     render() {
-        console.log(this.state.response)
         return (
             <div>
                 <h1>Find the issues of your fave Github repo!!</h1>
