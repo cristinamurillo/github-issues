@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import ResultsCont from './ResultsCont';
 import axios from 'axios'
+import hammer from '../hammer.png'
 
 class Landing extends Component {
 
@@ -47,6 +48,9 @@ class Landing extends Component {
 
     render() {
         return (
+            <React.Fragment>
+
+                <img id="icon1" src={hammer}/>
             <div>
                 <h1 id="header">Find the issues of your fave Github repo!!</h1>
                 <form onSubmit={this.submitHandler}>
@@ -56,6 +60,7 @@ class Landing extends Component {
                 </form>
                {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error}/>}
             </div>
+            </React.Fragment>
         )
     }
 }
