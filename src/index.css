@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 12em;
   position: absolute;
   z-index: -1;
-  top: 85%;
+  top: 75%;
   right: 11%;
 }
 
@@ -119,6 +119,7 @@ input.submit {
 .submit:hover {
   background: black;
   color: white;
+  cursor: pointer;
   transition: all .5s;
 }
 
