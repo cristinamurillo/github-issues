@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   z-index: -1;
   top: 45%;
-  left: 10%;
+  left: 12%;
   transform: rotate(45deg);
   /* animation: spin 10s infinite linear; */
 }
@@ -59,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
   margin-left: 4.3em;
   margin-top: 1.5em;
+  margin-bottom: .2em;
   font-size: 6vh;
   opacity: .9;
 }
@@ -66,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 80vh;
   overflow: scroll;
   padding: 0;
-  margin: 2em 8em;
+  margin: 1em 8em;
 }
 
 .issue-cont {
