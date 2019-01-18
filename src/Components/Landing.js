@@ -10,6 +10,9 @@ class Landing extends Component {
     state = {
         owner: "",
         repo: "", 
+        mostRecent: true,
+        open: true,
+        closed: false,
         page: 1,
         response: null,
         error: false, 
@@ -18,28 +21,45 @@ class Landing extends Component {
     }
 
     changeHandler = (e) => {
-        this.setState({
-           [e.target.name]: e.target.value
-        })
+        if(e.target.type === "checkbox"){
+            this.setState({[e.target.name]: !this.state[e.target.name]})
+        } else {
+            this.setState({[e.target.name]: e.target.value})
+        }
     }
 
     pageHandler = (e) => {
         if(e.target.name === "previous"){
-            this.setState({page: this.state.page-1}, ()=>this.submitHandler(null))
+            this.setState({page: this.state.page-1}, ()=>this.submitHandler())
         } else {
-            this.setState({page: this.state.page+1}, ()=> this.submitHandler(null))
+            this.setState({page: this.state.page+1}, ()=> this.submitHandler())
         }
     }
 
-    submitHandler = (e) => {
+    setStatus = () => {
+        if(this.state.closed && this.state.open){
+            return "all"
+        } else if(this.state.open){
+            return "open"
+        } else if(this.state.closed){
+            return "closed"
+        } else {
+            return "none"
+        }
+    }
+
+    submitHandler = (e=null) => {
         e && e.preventDefault()
         this.setState({
             loading: true,
             submitted: true
         })
         let {owner, repo} = this.state
+        let status = this.setStatus()
+        let direction
+        this.state.mostRecent ? direction="desc":direction="asc" 
         let config = {'Authorization': process.env.REACT_APP_GITHUB_SECRET}
-        axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page=${this.state.page}`, config)
+        axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page=${this.state.page}&direction=${direction}&state=${status}`, config)
             .then(res => {
                 this.setState({
                     response: res,
@@ -48,10 +68,16 @@ class Landing extends Component {
                 })
             })
             .catch(error =>{
+                if(status==="none"){
+                    this.setState({
+                        error: `Error: Must select open, closed, or both.`,
+                        loading: false
+                    })
+                } else {
                 this.setState({
-                    error: `Error: ${error.response.data.message}`,
+                    error: `Error: Invalid repository owner and/or name.`,
                     loading: false
-                })
+                })}
             })
     }
 
@@ -65,9 +91,16 @@ class Landing extends Component {
                 <form onSubmit={this.submitHandler}>
                     <input type="text" name="owner" value={this.state.owner} placeholder="Repository Owner" onChange={this.changeHandler} required/>
                     <input type="text" name="repo" value={this.state.repo} placeholder="Repository Name" onChange={this.changeHandler} required/>
+                    <br/>
+                    <label htmlFor="mostRecent">Most recent issues first:</label>
+                    <input type="checkbox" id="mostRecent" className="checkbox" name="mostRecent" checked={this.state.mostRecent} onChange={this.changeHandler}/>
+                    <label htmlFor="open">Open:</label>
+                    <input type="checkbox" id="open" name="open" className="checkbox" checked={this.state.open} onChange={this.changeHandler}/>
+                    <label htmlFor="open">Closed:</label>
+                    <input type="checkbox" id="closed" name="closed" className="checkbox" checked={this.state.closed} onChange={this.changeHandler}/>
                     <input type="submit" className="submit" value="Search"/>
                 </form>
-               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler}/>}
+               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler} page={this.state.page}/>}
             </div>
             </React.Fragment>
         )

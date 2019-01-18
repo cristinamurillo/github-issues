@@ -25,6 +25,7 @@ class IssueView extends Component {
                     <div className="col1">
                         <h4 className="issue-title">{issue.title}</h4>
                         <p>Status: {issue.state}</p>
+                        <p>Created: {issue.created_at.slice(0,10)}</p>
                         <a href={issue.html_url} target='_blank' rel="noopener noreferrer">View on Github</a>
                     </div>
                     <div>

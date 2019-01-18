@@ -7,7 +7,7 @@ class ResultsCont extends Component {
 
 
     render() {
-        let {loading, results, error, pageHandler} = this.props
+        let {loading, results, error, pageHandler, page} = this.props
         if(loading){
             return (
                 <React.Fragment>
@@ -24,7 +24,7 @@ class ResultsCont extends Component {
                 </React.Fragment>
             )
         } else {
-            console.log(results)
+            console.log(page)
             return (
                 <div className="section">
                     <h2 id="issues-header">Project Issues:</h2>
@@ -33,7 +33,7 @@ class ResultsCont extends Component {
                         return <IssueView issue={issue}/>
                     })}
                     </div>
-                    <button className="page-link"href="" name="previous" onClick={pageHandler}>Prev. Page</button> <button className="page-link"href="" name="next" onClick={pageHandler}>Next Page</button>
+                    <button disabled={page===1?true:false}className="page-link"href="" name="previous" onClick={pageHandler}>Prev. Page</button> <button className="page-link"href="" name="next" onClick={pageHandler}>Next Page</button>
                 </div>
             );
     }}
