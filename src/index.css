@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .issue-title {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -139,4 +140,49 @@ input.submit {
   background-color: rgba(0, 255, 191, 0.4); 
   border-color: rgb(255, 255, 255);
   transform: translateY(-2px);
+}
+
+.page-link {
+  margin: 1em;
+  border: none;
+  background: none;
+  text-decoration-color: cadetblue;
+  text-decoration-line: underline;
+  color: cadetblue;
+  font-size: 1.3em;
+}
+
+.medium {
+  font-size: 1.3em;
+  font-family: ikaros;
+}
+.page-link:hover {
+  cursor: pointer;
+}
+
+.section {
+  margin-bottom: 6em;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.loader {
+  width: 10vh;
+  animation: spin 5s infinite linear;
+
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
