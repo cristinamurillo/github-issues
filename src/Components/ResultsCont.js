@@ -20,7 +20,7 @@ class ResultsCont extends Component {
             return(
                 <React.Fragment>
                     <h2 id="issues-header">Project Issues:</h2>
-                    <p>{error}</p>
+                    <p className="medium">{error}</p>
                 </React.Fragment>
             )
         } else {
