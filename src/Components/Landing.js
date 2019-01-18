@@ -43,6 +43,8 @@ class Landing extends Component {
             return "open"
         } else if(this.state.closed){
             return "closed"
+        } else {
+            return "none"
         }
     }
 
@@ -54,7 +56,6 @@ class Landing extends Component {
         })
         let {owner, repo} = this.state
         let status = this.setStatus()
-        console.log(status)
         let direction
         this.state.mostRecent ? direction="desc":direction="asc" 
         let config = {'Authorization': process.env.REACT_APP_GITHUB_SECRET}
@@ -67,10 +68,16 @@ class Landing extends Component {
                 })
             })
             .catch(error =>{
+                if(status==="none"){
+                    this.setState({
+                        error: `Error: Must select open, closed, or both.`,
+                        loading: false
+                    })
+                } else {
                 this.setState({
-                    error: `Error: Invalid repository owner and/or name`,
+                    error: `Error: Invalid repository owner and/or name.`,
                     loading: false
-                })
+                })}
             })
     }
 
@@ -93,7 +100,7 @@ class Landing extends Component {
                     <input type="checkbox" id="closed" name="closed" className="checkbox" checked={this.state.closed} onChange={this.changeHandler}/>
                     <input type="submit" className="submit" value="Search"/>
                 </form>
-               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler}/>}
+               {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler} page={this.state.page}/>}
             </div>
             </React.Fragment>
         )

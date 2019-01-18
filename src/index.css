@@ -162,11 +162,16 @@ input.submit {
   font-size: 1.3em;
 }
 
+.page-link:disabled{
+  text-decoration-color: gray;
+  color: gray;
+}
+
 .medium {
   font-size: 1.3em;
   font-family: ikaros;
 }
-.page-link:hover {
+.page-link:hover:enabled {
   cursor: pointer;
 }
 
