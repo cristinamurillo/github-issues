@@ -10,6 +10,7 @@ class Landing extends Component {
     state = {
         owner: "",
         repo: "", 
+        mostRecent: true,
         page: 1,
         response: null,
         error: false, 
@@ -18,28 +19,32 @@ class Landing extends Component {
     }
 
     changeHandler = (e) => {
-        this.setState({
-           [e.target.name]: e.target.value
-        })
+        if(e.target.name === "mostRecent"){
+            this.setState({mostRecent: !this.state.mostRecent})
+        } else {
+            this.setState({[e.target.name]: e.target.value})
+        }
     }
 
     pageHandler = (e) => {
         if(e.target.name === "previous"){
-            this.setState({page: this.state.page-1}, ()=>this.submitHandler(null))
+            this.setState({page: this.state.page-1}, ()=>this.submitHandler())
         } else {
-            this.setState({page: this.state.page+1}, ()=> this.submitHandler(null))
+            this.setState({page: this.state.page+1}, ()=> this.submitHandler())
         }
     }
 
-    submitHandler = (e) => {
+    submitHandler = (e=null) => {
         e && e.preventDefault()
         this.setState({
             loading: true,
             submitted: true
         })
         let {owner, repo} = this.state
+        let direction=""
+        this.state.mostRecent ? direction="desc":direction="asc"
         let config = {'Authorization': process.env.REACT_APP_GITHUB_SECRET}
-        axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page=${this.state.page}`, config)
+        axios.get(`https://api.github.com/repos/${owner}/${repo}/issues?page=${this.state.page}&direction=${direction}`, config)
             .then(res => {
                 this.setState({
                     response: res,
@@ -65,6 +70,9 @@ class Landing extends Component {
                 <form onSubmit={this.submitHandler}>
                     <input type="text" name="owner" value={this.state.owner} placeholder="Repository Owner" onChange={this.changeHandler} required/>
                     <input type="text" name="repo" value={this.state.repo} placeholder="Repository Name" onChange={this.changeHandler} required/>
+                    <br/>
+                    <label for="mostRecent">Most recent issues first:</label>
+                    <input type="checkbox" id="mostRecent" name="mostRecent" checked={this.state.mostRecent} onChange={this.changeHandler}/>
                     <input type="submit" className="submit" value="Search"/>
                 </form>
                {this.state.submitted && <ResultsCont loading ={this.state.loading }results={this.state.response} error={this.state.error} pageHandler={this.pageHandler}/>}

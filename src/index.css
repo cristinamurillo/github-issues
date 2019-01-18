@@ -113,6 +113,15 @@ input {
   min-width: 30vh;
 }
 
+input#mostRecent {
+  min-width: 4vh;
+  background: none;
+  padding: 0;
+  height: 2.5vh;
+  /* margin: 0; */
+  box-shadow: none;
+}
+
 input.submit {
   min-width: 10vh;
   font-weight: bold;
