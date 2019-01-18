@@ -134,6 +134,10 @@ input.submit {
   transition: all .5s;
 }
 
+form label {
+  font-family: ikaros;
+}
+
 .med-button {
   padding: 1em;
   border-radius: 4px;

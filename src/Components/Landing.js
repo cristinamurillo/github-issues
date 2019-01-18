@@ -92,11 +92,11 @@ class Landing extends Component {
                     <input type="text" name="owner" value={this.state.owner} placeholder="Repository Owner" onChange={this.changeHandler} required/>
                     <input type="text" name="repo" value={this.state.repo} placeholder="Repository Name" onChange={this.changeHandler} required/>
                     <br/>
-                    <label htmlFor="mostRecent">Most recent issues first:</label>
+                    <label htmlFor="mostRecent">Most recent issues first</label>
                     <input type="checkbox" id="mostRecent" className="checkbox" name="mostRecent" checked={this.state.mostRecent} onChange={this.changeHandler}/>
-                    <label htmlFor="open">Open:</label>
+                    <label htmlFor="open">Open</label>
                     <input type="checkbox" id="open" name="open" className="checkbox" checked={this.state.open} onChange={this.changeHandler}/>
-                    <label htmlFor="open">Closed:</label>
+                    <label htmlFor="open">Closed</label>
                     <input type="checkbox" id="closed" name="closed" className="checkbox" checked={this.state.closed} onChange={this.changeHandler}/>
                     <input type="submit" className="submit" value="Search"/>
                 </form>
